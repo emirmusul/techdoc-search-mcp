@@ -1,0 +1,14 @@
+[project]
+name = "mcp-techdoc-search"
+version = "0.1.0"
+description = "MCP server for task-scoped search over local technical PDFs (datasheets, RFCs, application notes)"
+requires-python = ">=3.11"
+dependencies = [
+    "pymupdf>=1.24",
+    "rank-bm25>=0.2.2",
+    "mcp>=1.0.0",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

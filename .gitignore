@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Real PDFs and generated indexes stay local — don't commit datasheets
+data/raw/*
+data/index/*
+!data/raw/.gitkeep
+!data/index/.gitkeep

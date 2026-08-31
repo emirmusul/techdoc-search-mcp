@@ -1,7 +1,7 @@
 """
-Faz B: BM25 tabanlı arama motoru.
+Faz B: BM25 tabanli arama motoru.
 
-data/index/ altındaki tüm JSON dosyalarını yükler, rank-bm25 ile
+data/index/ altindaki tüm JSON dosyalarini yükler, rank-bm25 ile
 tokenize ederek aranabilir hale getirir.
 
 Usage:

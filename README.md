@@ -13,6 +13,26 @@ of you scrolling through a 900-page manual.
   synthesis via sampling or a free LLM API) and non-English tokenization are
   planned as opt-in modes, not defaults — see [Roadmap](#roadmap).
 
+## Why not just paste the PDF into Claude?
+
+For a single question on a single document, you probably could. This
+matters at scale:
+
+- **Cost/context**: uploading a 78-page datasheet directly costs ~150-250K
+  tokens (text + page images) per message. A `search_techdoc` call returns
+  only the top-5 relevant chunks — roughly 100x fewer tokens per question.
+- **No re-upload**: the index persists on disk. Ask a question today, ask
+  another next month, without re-attaching the file each time.
+- **Scales to many documents**: indexing 10+ datasheets doesn't change how
+  you query — `search_techdoc` searches across all of them at once.
+- **Indexing and search cost nothing**: `ingest.py` and `search.py` run
+  entirely locally (regex/font parsing + BM25), no LLM calls. Only the
+  final interpretation step touches the model, on a small result set.
+
+Measured on a real 78-page ESP32 datasheet (95 indexed sections,
+120,969 characters): full-document cost per question ≈ $0.40 equivalent
+(Sonnet 5 API pricing) vs. ≈ $0.004 via `search_techdoc` — about 100x.
+
 ## Status: MVP complete ✅
 
 - [x] **Phase A** — PDF → section-aware chunks → JSON index (`source/ingest.py`)

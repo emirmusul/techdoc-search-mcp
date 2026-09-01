@@ -4,7 +4,9 @@
       "Bash(git add:*)",
       "Bash(git commit:*)",
       "mcp__techdoc-search__search_techdoc",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(python3 ingest.py ../data/raw/esp32_datasheet_en.pdf)",
+      "Bash(git rm:*)"
     ]
   }
 }
